@@ -9,17 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_validator_1 = require("express-validator");
 const Cart = require('../models/cart');
 const Product = require('../models/product');
 const catchAsyncs = require('../util/catchAsync');
 const factorys = require('../constrollers/handlerFactory');
 /* PUT request for addtocart functionality */
-exports.addToCart = catchAsyncs(express_validator_1.check('item', 'item is required').notEmpty(), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const errors = express_validator_1.validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
+exports.addToCart = catchAsyncs((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield Product.findById(req.params.id);
     if (!product) {
         res.status(400).json({ msg: 'Product not found' });

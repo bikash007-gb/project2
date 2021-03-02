@@ -31,7 +31,7 @@ exports.updateOne = Model => catchAsync((req, res, next) => __awaiter(this, void
         runValidators: true
     });
     if (!doc) {
-        return next(new AppError('No document found with that ID', 404));
+        return next(new AppErrors('No document found with that ID', 404));
     }
     res.status(200).json({
         status: 'success',
@@ -41,7 +41,7 @@ exports.updateOne = Model => catchAsync((req, res, next) => __awaiter(this, void
 exports.deleteOne = Model => catchAsync((req, res, next) => __awaiter(this, void 0, void 0, function* () {
     const doc = yield Model.findByIdAndDelete(req.params.id);
     if (!doc) {
-        return next(new AppError('No document found with that ID', 404));
+        return next(new AppErrors('No document found with that ID', 404));
     }
     res.status(204).json({
         status: 'success',
