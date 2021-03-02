@@ -27,10 +27,9 @@ const app = express();
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.post('/product/create', uploads.single('product_img'), express_validator_1.check('name', 'name is required').notEmpty(), express_validator_1.check('unit_price', 'unit_price is required').notEmpty(), express_validator_1.check('quantity', 'quantity is required').notEmpty(), 
 /* This route is use to Create new Product
 validation is done using express-validator middleware */
-(req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('/product/create', uploads.single('product_img'), express_validator_1.check('name', 'name is required').notEmpty(), express_validator_1.check('unit_price', 'unit_price is required').notEmpty(), express_validator_1.check('quantity', 'quantity is required').notEmpty(), (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     console.log(req.file);
     const errors = express_validator_1.validationResult(req);
     if (!errors.isEmpty()) {

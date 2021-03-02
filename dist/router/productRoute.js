@@ -1,6 +1,6 @@
 const expresse = require('express');
-const productscontroller = require('../constrollers/productcontroller');
-const cartController = require('../constrollers/cartcontroller');
+const productscontroller = require('../controllers/productcontroller');
+const cartController = require('../controllers/cartcontroller');
 const router = expresse.Router();
 /* API Routes */
 router.get('/getAll', productscontroller.getAll);
