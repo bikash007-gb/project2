@@ -48,6 +48,6 @@ app.post('/product/create', uploads.single('product_img'), express_validator_1.c
         doc
     });
 }));
-app.use('/product', productRouter);
+app.use('/', productRouter);
 module.exports = app;
 //# sourceMappingURL=app.js.map
